@@ -17,13 +17,13 @@ urlpatterns = [
     path('<pk>/module/', ModuleViews.CourseModuleUpdateView.as_view(),
         name='course_module_update'),
 
-    # path('module/<int:module_id>/content/<model_name>/create/',
-    #     CourseViews.ContentCreateUpdateView.as_view(),
-    #     name='module_content_create'),
+    path('module/<int:module_id>/content/<model_name>/create/',
+        CourseViews.ContentCreateUpdateView.as_view(),
+        name='module_content_create'),
 
-    # path('module/<int:module_id>/content/<model_name>/<id>/',
-    #     CourseViews.ContentCreateUpdateView.as_view(),
-    #     name='module_content_update'),
+    path('module/<int:module_id>/content/<model_name>/<id>/',
+        CourseViews.ContentCreateUpdateView.as_view(),
+        name='module_content_update'),
 
     # path('content/<int:id>/delete/', CourseViews.ContentDeleteView.as_view(),
     #     name='module_content_delete'),
