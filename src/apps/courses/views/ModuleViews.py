@@ -5,7 +5,7 @@ from apps.courses.models import Course
 from apps.courses.forms import ModuleFormSet
 
 
-class CouseModuleUpdateView(TemplateResponseMixin, View):
+class CourseModuleUpdateView(TemplateResponseMixin, View):
     template_name = 'courses/manage/module/formset.html'
     course = None
 
@@ -14,7 +14,7 @@ class CouseModuleUpdateView(TemplateResponseMixin, View):
 
     def dispatch(self, request, pk):
         self.course = get_object_or_404(Course, id=pk, owner=request.user)
-        return super().dispath(request, pk)
+        return super().dispatch(request, pk)
 
     def get(self, request, *args, **kwargs):
         formset = self.get_formset()
