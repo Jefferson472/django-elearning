@@ -1,3 +1,3 @@
-from apps.courses.models import Courses
-from apps.courses.models import Subject
-from apps.courses.models import Module
+from apps.courses.models.Course import Course
+from apps.courses.models.Subject import Subject
+from apps.courses.models.Module import Module
