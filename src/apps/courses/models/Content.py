@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
+from apps.courses.fields import OrderField
 from apps.courses.models import Module
 
 
@@ -16,3 +17,7 @@ class Content(models.Model):
     )
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey('content_type', 'object_id')
+    order = OrderField(blank=True, for_fields=['module'])
+
+    class Meta:
+        ordering = ['order']
