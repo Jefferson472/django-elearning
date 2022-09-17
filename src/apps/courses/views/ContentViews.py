@@ -7,6 +7,7 @@ from apps.courses.models import Module, Content
 
 
 class ContentCreateUpdateView(TemplateResponseMixin, View):
+    """Class genérica para atualizado objeto Text, Video, Image ou File """
     module = None
     model = None
     obj = None
@@ -21,7 +22,8 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
         Form = modelformset_factory(model, exclude=[
             'owner', 'order', 'created', 'updated'
         ])
-        return Form(*args, **kwargs)
+        # return Form(*args, **kwargs) # estava no livro porém kwargs = instance = none estava gerado um erro got a inexpected argument 'instance'
+        return Form(*args)
     
     def dispatch(self, request, module_id, model_name, id=None):
         self.module = get_object_or_404(
