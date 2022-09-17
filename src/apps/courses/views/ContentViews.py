@@ -1,5 +1,5 @@
 from django.apps import apps
-from django.forms.models import modelformset_factory
+from django.forms.models import modelform_factory
 from django.views.generic.base import TemplateResponseMixin, View
 from django.shortcuts import get_object_or_404, redirect
 
@@ -21,11 +21,10 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
         return None
     
     def get_form(self, model, *args, **kwargs):
-        Form = modelformset_factory(model, exclude=[
+        Form = modelform_factory(model, exclude=[
             'owner', 'order', 'created', 'updated'
         ])
-        # return Form(*args, **kwargs) # estava no livro porém kwargs = instance = none estava gerado um erro got a inexpected argument 'instance'
-        return Form(*args)
+        return Form(*args, **kwargs)
     
     def dispatch(self, request, module_id, model_name, id=None):
         self.module = get_object_or_404(
