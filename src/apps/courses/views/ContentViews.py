@@ -3,6 +3,8 @@ from django.forms.models import modelformset_factory
 from django.views.generic.base import TemplateResponseMixin, View
 from django.shortcuts import get_object_or_404, redirect
 
+from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
+
 from apps.courses.models import Module, Content
 
 
@@ -69,3 +71,12 @@ class ContentDeleteView(View):
         content.item.delete()
         content.delete()
         return redirect('module_content_list', module.id)
+
+
+class ContentOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
+    """Lida com uma requisição post para reordenar o conteúdo"""
+    def post(self, request):
+        for id, order in self.request_json.items():
+            Content.objects.filter(
+                id=id, course__owner=request.user).update(order=order)
+        return self.render_json_response({'saved': 'Ok'})

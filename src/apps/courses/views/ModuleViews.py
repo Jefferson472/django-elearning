@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
 
+from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
+
 from apps.courses.models import Course
 from apps.courses.forms import ModuleFormSet
 from apps.courses.models.Module import Module
@@ -43,3 +45,12 @@ class ModuleContentListView(TemplateResponseMixin, View):
         module = get_object_or_404(
             Module, id=module_id, course__owner=request.user)
         return self.render_to_response({'module': module})
+
+
+class ModuleOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
+    """Lida com uma requisição post para reordenar o conteúdo"""
+    def post(self, request):
+        for id, order in self.request_json.items():
+            Module.objects.filter(
+                id=id, course__owner=request.user).update(order=order)
+        return self.render_json_response({'saved': 'Ok'})
