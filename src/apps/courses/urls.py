@@ -1,4 +1,5 @@
 from django.urls import path
+
 from apps.courses.views import CourseViews, ModuleViews, ContentViews
 
 urlpatterns = [
@@ -31,10 +32,9 @@ urlpatterns = [
     path('module/<int:module_id>/', ModuleViews.ModuleContentListView.as_view(),
         name='module_content_list'),
 
-    # path('module/order/', CourseViews.ModuleOrderView.as_view(),
-    #     name='module_order'),
+    path('module/order/', ModuleViews.ModuleOrderView.as_view(),
+        name='module_order'),
 
-    # path('content/order/', CourseViews.ContentOrderView.as_view(),
-    #     name='content_order'),
-
+    path('content/order/', ContentViews.ContentOrderView.as_view(),
+        name='content_order'),
 ]
