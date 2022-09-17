@@ -36,6 +36,7 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
 
 
 class ModuleContentListView(TemplateResponseMixin, View):
+    """Lê o objeto Module com ID especificado e renderiza um template com esse módulo"""
     template_name = 'courses/manage/module/content_list.html'
 
     def get(self, request, module_id):
