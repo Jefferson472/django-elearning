@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateResponseMixin, View
 from apps.courses.models import Course
 from apps.courses.forms import ModuleFormSet
 
-
+# o template mixin foi utilizado para renderizar mais de uma model na mesma view
 class CourseModuleUpdateView(TemplateResponseMixin, View):
     template_name = 'courses/manage/module/formset.html'
     course = None
@@ -24,7 +24,7 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
         })
     
     def post(self, request, *args, **kwargs):
-        formset =self.get_formset(data=request.POST)
+        formset = self.get_formset(data=request.POST)
         if formset.is_valid():
             formset.save()
             return redirect('manage_course_list')
