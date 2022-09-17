@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateResponseMixin, View
 
 from apps.courses.models import Course
 from apps.courses.forms import ModuleFormSet
+from apps.courses.models.Module import Module
 
 # o template mixin foi utilizado para renderizar mais de uma model na mesma view
 class CourseModuleUpdateView(TemplateResponseMixin, View):
@@ -32,3 +33,12 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
             'course': self.course,
             'formset': formset
         })
+
+
+class ModuleContentListView(TemplateResponseMixin, View):
+    template_name = 'courses/manage/module/content_list.html'
+
+    def get(self, request, module_id):
+        module = get_object_or_404(
+            Module, id=module_id, course__owner=request.user)
+        return self.render_to_response({'module': module})

@@ -28,8 +28,8 @@ urlpatterns = [
     path('content/<int:id>/delete/', ContentViews.ContentDeleteView.as_view(),
         name='module_content_delete'),
 
-    # path('module/<int:module_id>/', CourseViews.ModuleContentListView.as_view(),
-    #     name='module_content_list'),
+    path('module/<int:module_id>/', ModuleViews.ModuleContentListView.as_view(),
+        name='module_content_list'),
 
     # path('module/order/', CourseViews.ModuleOrderView.as_view(),
     #     name='module_order'),
