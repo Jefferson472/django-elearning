@@ -25,8 +25,8 @@ urlpatterns = [
         ContentViews.ContentCreateUpdateView.as_view(),
         name='module_content_update'),
 
-    # path('content/<int:id>/delete/', CourseViews.ContentDeleteView.as_view(),
-    #     name='module_content_delete'),
+    path('content/<int:id>/delete/', ContentViews.ContentDeleteView.as_view(),
+        name='module_content_delete'),
 
     # path('module/<int:module_id>/', CourseViews.ModuleContentListView.as_view(),
     #     name='module_content_list'),
