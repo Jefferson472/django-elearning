@@ -4,5 +4,5 @@ from apps.courses.models import Course
 
 
 class CourseEnrollForm(forms.Form):
-    course = forms.modelChoiceField(
+    course = forms.ModelChoiceField(
         queryset=Course.objects.all(), widget=forms.HiddenInput)
