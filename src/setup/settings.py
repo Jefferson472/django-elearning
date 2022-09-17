@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # third-apps
     # my-apps
     'apps.courses',
+    'apps.students',
 ]
 
 MIDDLEWARE = [
