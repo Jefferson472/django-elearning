@@ -37,4 +37,10 @@ urlpatterns = [
 
     path('content/order/', ContentViews.ContentOrderView.as_view(),
         name='content_order'),
+
+    path('subject/<slug:subject>/',
+        CourseViews.CourseListView.as_view(), name='course_list_subject'),
+
+    path('<slug:slug>/', CourseViews.CourseDetailView.as_view(),
+        name='course_detail'),
 ]
