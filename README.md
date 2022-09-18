@@ -6,4 +6,4 @@ Plataforma de cursos onlines desenvolvida com Django
 `docker run --name memcache -p 11211:11211 memcached`
 
 ### Monitorando o cache
-django-memcache-status
+django-memcache-status # essa feature não funciona no pymemcache
