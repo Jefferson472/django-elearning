@@ -19,7 +19,3 @@ class CourseAdmin(admin.ModelAdmin):
     search_filed = ["title", "overview"]
     prepopulated_fields = {"slug": ("title",)}
     inlines = [ModuleInline]
-
-
-# usa o site de índice para administração memcache
-admin.site.index_template = 'memcache_status/admin_index.html'
