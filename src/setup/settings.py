@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # third-apps
+    'embed_video',
     # my-apps
     'apps.courses',
     'apps.students',
