@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # third-apps
     'embed_video',
+    'memcache_status',
     # my-apps
     'apps.courses',
     'apps.students',
