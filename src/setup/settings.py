@@ -54,9 +54,9 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     'django.middleware.cache.UpdateCacheMiddleware',
-    "django.middleware.common.CommonMiddleware",
+    # "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -155,3 +155,7 @@ LOGOUT_REDIRECT_URL = reverse_lazy('login')
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+#  for example
+# CACHE_MIDDLEWARE_ALIAS = 'default'
+# CACHE_MIDDLEWARE_SECONDS = 60 * 15 # armazena cache por 15 min
+# CACHE_MIDDLEWARE_KEY_PREFIX = 'elearning' # prefixo caso o memcached seja utilizado por outros apps
