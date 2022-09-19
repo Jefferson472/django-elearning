@@ -15,6 +15,7 @@ urlpatterns = [
     path('course/', include('apps.courses.urls')),
     path('students/', include('apps.students.urls')),
     path('api/', include('apps.courses.api.urls')),
+    path('chat/', include('apps.chat.urls', namespace='chat')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]
 
