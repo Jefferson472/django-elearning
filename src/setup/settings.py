@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # my-apps
     'apps.courses',
     'apps.students',
+    'apps.chat',
 ]
 
 MIDDLEWARE = [
