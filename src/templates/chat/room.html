@@ -14,7 +14,7 @@
 {% block domready %}
   var url = 'ws://' + window.location.host +
             '/ws/chat/room/' + '{{ course.id }}/';
-  var chatSocket = new WebSocket(url);
+  var chatSocket = new WebSocket(url); <!-- Inicia a conexão -->
 
   chatSocket.onmessage = function(e) {
     var data = JSON.parse(e.data);
@@ -46,13 +46,13 @@
   $submit.click(function() {
     var message = $input.val();
     if(message) {
-      // send message in JSON format
+      <!-- send message in JSON format -->
       chatSocket.send(JSON.stringify({'message': message}));
 
-      // clear input
+      <!-- clear input -->
       $input.val('');
 
-      // return focus
+      <!-- return focus -->
       $input.focus();
     }
   });
@@ -60,7 +60,8 @@
   $input.focus();
   $input.keyup(function(e) {
     if (e.which === 13) {
-      // submit with enter / return key
+      console.log('TESTE')
+      <!-- submit with enter / return key -->
       $submit.click();
     }
   });
