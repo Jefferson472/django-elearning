@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # third-apps
     'embed_video',
     "debug_toolbar",
+    "rest_framework",
     # my-apps
     'apps.courses',
     'apps.students',
@@ -159,3 +160,9 @@ INTERNAL_IPS = [
 # CACHE_MIDDLEWARE_ALIAS = 'default'
 # CACHE_MIDDLEWARE_SECONDS = 60 * 15 # armazena cache por 15 min
 # CACHE_MIDDLEWARE_KEY_PREFIX = 'elearning' # prefixo caso o memcached seja utilizado por outros apps
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
+}
