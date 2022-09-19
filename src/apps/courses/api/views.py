@@ -11,6 +11,8 @@ from rest_framework.views import APIView
 from apps.courses.models.Course import Course
 from apps.courses.models.Subject import Subject
 from apps.courses.api.serializers import SubjectSerializer, CourseSerializer
+from apps.courses.api.serializers import CourseWithContentsSerializer
+from apps.courses.api.permissions import IsEnrolled
 
 
 class SubjectListView(generics.ListAPIView):
@@ -40,7 +42,7 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CourseSerializer
 
     @action(
-        detail=True,
+        detail=True, # ação executada em um único objeto
         methods=['post'],
         authentication_classes=[BasicAuthentication],
         permission_classes=[IsAuthenticated],
@@ -49,3 +51,13 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
         course = self.get_object()
         course.students.add(request.user)
         return Response({'enrolled': True})
+
+    @action(
+        detail=True, # ação executada em um único objeto
+        methods=['get'],
+        serializer_class=CourseWithContentsSerializer,
+        authentication_classes=[BasicAuthentication],
+        permission_classes=[IsAuthenticated, IsEnrolled], # IsEnrolled garante somente alunos inscritos no curso
+    )
+    def contents(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
