@@ -18,7 +18,7 @@ from django.urls import reverse_lazy
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env()
-env.read_env(os.path.join(BASE_DIR.parent, '.env'))
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -86,7 +86,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "setup.wsgi.application"
 
-ASGI_APPLICATION = 'setup.routing.application'
+ASGI_APPLICATION = "setup.asgi.application"
 
 
 # Database
@@ -114,9 +114,9 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('127.0.0.1', 6379)]
-        }
-    }
+            'hosts': [('127.0.0.1', 6379)],
+        },
+    },
 }
 
 # Password validation
