@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'embed_video',
     "debug_toolbar",
     "rest_framework",
+    "channels",
     # my-apps
     'apps.courses',
     'apps.students',
