@@ -162,3 +162,5 @@ cython_debug/
 # my rules
 .vscode/
 media/
+redis/
+cache/
