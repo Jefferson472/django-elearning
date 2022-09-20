@@ -19,9 +19,5 @@ DATABASES = {
     }
 }
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
-        'LOCATION': 'memcache:11211',
-    }
-}
+SECURE_SSL_REDIRECT = True # redireciona as requisições HTTP para HTTPs
+CSRF_COOKIE_SECURE = True # cookie seguro
