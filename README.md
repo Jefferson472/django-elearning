@@ -14,3 +14,11 @@ Aparentemente o cli do docker-compose está com um erro de leitura para alguns c
 https://github.com/docker/compose-cli/issues/1896
 
 Para escapar desse erro, remova temporariamente a chave que contém o erro, no caso deste projeto o caractere inválido está no `SECRET_KEY` do Django.
+
+### Know Issues
+Se estiver utilizando qualquer SO baseado em Unix ou Docker, a dependência twisted-iocpsupport==1.0.2 não será necessária, pois ela é utilizada para conectar aos sockets do windows.
+
+
+### Channels Daphne
+
+`daphne -u /tmp/daphne.sock src.setup.asgi:application`
