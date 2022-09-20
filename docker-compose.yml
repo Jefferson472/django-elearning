@@ -52,3 +52,17 @@ services:
       - db
       - redis
       - memcache
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart: always
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+    depends_on:
+      - app

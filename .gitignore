@@ -164,3 +164,7 @@ cython_debug/
 media/
 redis/
 cache/
+pgdata/
+lvenv/
+ssl/
+logs/
