@@ -31,3 +31,24 @@ services:
       - '11211:11211'
     volumes:
       - ./cache:/var/lib/cache/data
+  
+  app:
+    container_name: app
+    restart: always
+    build:
+      context: src
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    command: python src/manage.py runserver 0.0.0.0:8000 --settings=setup.settings.prod
+    environment:
+      - DB_NAME=${POSTGRES_DB}
+      - DB_USER=${POSTGRES_USER}
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - DB_HOST=${DB_HOST}
+    depends_on:
+      - db
+      - redis
+      - memcache
