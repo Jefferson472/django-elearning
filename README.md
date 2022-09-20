@@ -22,3 +22,13 @@ Se estiver utilizando qualquer SO baseado em Unix ou Docker, a dependência twis
 ### Channels Daphne
 
 `daphne -u /tmp/daphne.sock src.setup.asgi:application`
+
+### Config Comandos
+
+`python manage.py enroll_reminder --days=20`
+
+Cron
+
+`crontab -e`
+
+`0 8 * * * python path/to/project/manage.py enroll_reminder --20=days --setings=setup.settings.prod`
