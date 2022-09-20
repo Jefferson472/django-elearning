@@ -32,3 +32,9 @@ Cron
 `crontab -e`
 
 `0 8 * * * python path/to/project/manage.py enroll_reminder --20=days --setings=setup.settings.prod`
+
+### Executando o servidor com Nginx localmente
+/etc/hosts
+C:\Windows\System32\drivers\etc
+127.0.0.1   www.django-elearning.com
+127.0.0.1   django-elearning.com
