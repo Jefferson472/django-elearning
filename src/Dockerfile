@@ -4,7 +4,7 @@ ENV PYTHONUMBUFFER=1
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
 
-WORKDIR /code
+WORKDIR /home/django-elearning
 
 RUN apt-get update \
   # dependencies for building Python packages
@@ -20,6 +20,6 @@ COPY requirements-dev.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install --no-cache-dir -r requirements-dev.txt
 
-COPY . /code/
+COPY . /home/django-elearning/
 
-CMD ["tail", "-f", "/dev/null", "uwsgi --ini config/uwsgi.ini"]
+CMD ["tail", "-f", "/dev/null", "uwsgi --ini src/config/uwsgi.ini"]

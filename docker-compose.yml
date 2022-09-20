@@ -7,7 +7,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./pgdata:/var/lib/postgresql
+      - ./pgdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
@@ -41,8 +41,9 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/code
+      - .:/home/django-elearning
     command: python src/manage.py runserver 0.0.0.0:8000 --settings=setup.settings.prod
+    # command: uwsgi --ini src/config/uwsgi.ini # rodar pelo uwsgi
     environment:
       - DB_NAME=${POSTGRES_DB}
       - DB_USER=${POSTGRES_USER}

@@ -6,7 +6,7 @@ ADMINS = (
     (env("USER"), env("EMAIL")),
 )
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['django-elearning.com', 'www.django-elearning.com']
 
 DATABASES = {
     "default": {
