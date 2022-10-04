@@ -1,6 +1,10 @@
 # django-elearning
 Plataforma de cursos onlines desenvolvida com Django
 
+<div align="center" id="badges">
+    <img src="https://img.shields.io/badge/STATUS-WIP-red"/>
+</div>
+---
 
 ## CACHE
 `docker run --name memcache -p 11211:11211 memcached`
